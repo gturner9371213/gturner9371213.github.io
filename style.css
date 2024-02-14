@@ -1,0 +1,275 @@
+/*Website body background */
+body{
+    background-color: white;
+    
+} /*body*/
+
+/*Header styling */
+header {
+    
+    color: black;
+    text-align: center;
+}
+
+h1{
+    font-family:  Lucida Console;
+    text-align: justify;
+    font-size: 45px;
+}
+/*id for the grillbillies text styling*/
+#grilldes{
+    margin-top: 25%;
+    font-family:  Lucida Console;
+    text-align: justify;
+     font-size: 25px;
+     margin-top: 0;
+     margin-bottom: 20px;
+     margin: 15px;
+
+}
+
+/*styling for the images that was inspired from below*/
+/*https://www.geeksforgeeks.org/how-to-wrap-the-text-around-an-image-using-html-and-css/ */ 
+img {
+    float: left;
+    margin: 10px;
+}
+
+
+
+/*font styling for text in the body */
+p{
+   font-family:  Lucida Console;
+   text-align: justify;
+    font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin: 15px;
+}
+/* navigation styling */
+
+/* Inspiration for navigation bar came from  https://www.w3schools.com/csS/css_navbar_horizontal.asp */
+ul{
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-top-color: black;
+    margin: top 0;;
+    overflow: hidden;
+    background-color:black;
+    width: 100%; 
+}
+
+.nav a{
+    text-decoration: none;
+    padding: 40px;
+    color: lightgray;
+    font-size: larger;
+}
+
+.nav{
+    align-items: center;
+    justify-content: center;
+}
+
+/*Styling for the Youtube video in dopelife.html*/
+iframe {
+    display: block; 
+    width: 100%; 
+    max-width: 420px; 
+    height: 315px; 
+    margin-top: 20px; 
+}
+
+/*Format for grillbillies*/
+.formatgrillbillies {
+    
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    gap: 20px; 
+}
+/*styling for the grillbillies video*/
+video{
+    margin-top: 0;
+}
+.formatgrillbillies video, .formatgrillbillies p {
+  flex : 1 
+}
+/*Footer Styling */
+/*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:black;
+    color: white;
+    text-align: center;
+  }
+/*Dope life page styling for text*/
+#dopelifep 
+{
+    font-family:  Lucida Console;
+    text-align: justify;
+     font-size: 25px;
+     margin-top: 0;
+     margin-bottom: 20px;
+     margin: 15px;
+     letter-spacing:1px ; 
+}
+/*Art images styling height and weight on the page*/
+.artimage{
+    width: 100%;
+    height: 100%;
+}
+/*For smaller screens */
+@media only screen and (max-width: 1100px) {
+     /*adjusting font to fit the page*/
+     p{
+       font-family:  Lucida Console;
+       text-align: justify;
+        font-size: 15px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin: 15px;
+    }
+   
+    
+    /*Adjusting grillbillies font for grillbillies page*/
+    #grilldes{
+        margin-top: 25%;
+        font-family:  Lucida Console;
+        text-align: justify;
+         font-size: 15px;
+         margin-top: 0;
+         margin-bottom: 20px;
+         margin: 15px;
+    
+    }
+    
+   
+    
+
+}
+/*Adjusting for smaller screens */
+@media only screen and (max-width: 716px) {
+     /*adjusting nav bar size it will fit nicely  */
+    /* Inspiration for navigation bar came from  https://www.w3schools.com/csS/css_navbar_horizontal.asp */
+    .nav a{
+        text-decoration: none;
+        padding: 40px;
+        color: lightgray;
+        font-size: medium;
+    }
+    
+    .nav{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    
+    ul{
+        margin: 0;
+        margin-bottom: 15px;
+        padding: 20px;
+        border-top-color: black;
+        margin: top 0;;
+        overflow: hidden;
+        background-color:black;
+        width: 100%; 
+    }
+      /*adjust font to fit on the page */
+    p{
+        font-family:  Lucida Console;
+        text-align: justify;
+         font-size: 12px;
+         margin-top: 0;
+         margin-bottom: 20px;
+         margin: 15px;
+     }
+     /*adjust font on dopelife page to fit on screen*/
+     #dopelifep 
+    {
+     font-family:  Lucida Console;
+     text-align: justify;
+      font-size: 12px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      margin: 15px;
+      letter-spacing:1px ; 
+}
+ /*adjust font on grillbillies page to fit on screen*/
+ #grilldes{
+    margin-top: 25%;
+    font-family:  Lucida Console;
+    text-align: justify;
+     font-size: 12px;
+     margin-top: 0;
+     margin-bottom: 20px;
+     margin: 15px;
+   /*adjust size of images to fit on the screen*/
+  .artimage{
+    width: 70%;
+    height: 70%;
+    }
+
+}
+} 
+/*Adjusting for smaller screens */
+@media only screen and (max-width: 669px) {
+   /*adjusting nav bar size it will fit nicely  */
+    /* Inspiration for navigation bar came from  https://www.w3schools.com/csS/css_navbar_horizontal.asp */
+    .nav a{
+        text-decoration: none;
+        padding: 40px;
+        color: lightgray;
+        font-size:smaller;
+    }
+    
+    .nav{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    
+    ul{
+        margin: 0;
+        margin-bottom: 15px;
+        padding: 20px;
+        border-top-color: black;
+        margin: top 0;;
+        overflow: hidden;
+        background-color:black;
+        width: 100%; 
+    }
+    /*adjust font to fit on the page */
+    p{
+    h1{
+        font-family:  Lucida Console;
+        text-align: justify;
+        font-size: 35px;
+    }
+    /*adjust font to fit on the page */
+    p{
+       font-family:  Lucida Console;
+       text-align: justify;
+        font-size: 12px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin: 15px;
+    }
+     /*adjust image size to fit on the page */
+    p{
+    .artimage{
+        width: 60%;
+        height: 60%;
+        }
+
+}
+
+@media only screen and (max-width: 669px) {
+
+
+}
