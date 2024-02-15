@@ -90,10 +90,7 @@ iframe {
     justify-content: flex-start; 
     gap: 20px; 
 }
-/*styling for the grillbillies video*/
-video{
-    margin-top: 0;
-}
+
 .formatgrillbillies video, .formatgrillbillies p {
   flex : 1 
 }
