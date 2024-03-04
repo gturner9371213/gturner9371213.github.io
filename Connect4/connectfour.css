@@ -1,0 +1,39 @@
+
+/* Inspired by tutorial https://www.youtube.com/watch?v=4ARsthVnCTg&t=379s */
+
+
+/*  Styling for the body sets fonts and center text alignment */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+/* Styling for the game board.*/
+#board {
+    height: 540px;
+    width: 630px;
+    background-color: rgb(204, 255, 0);
+    border: 10px solid rgb(226, 198, 37);
+    
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Styling for the tile.*/
+.tile {
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+
+    /* Circle */
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid rgb(226, 198, 37);
+}
+/* Styling red pieace.*/
+.red-piece {
+    background-color: red;
+}
+/* Styling black pieace.*/
+.black-piece {
+    background-color: black;
+}
