@@ -12,6 +12,8 @@ var currColumns = [];
 window.onload = function()
 {
     setBoard(); 
+    document.getElementById("resetButton").addEventListener("click", resetGame);
+
 
 }
 
@@ -149,4 +151,36 @@ function setWinner(r, c) {
        winner.innerText = "Black Wins";
    }
    gameOver = true;
+}
+/*
+ Reset the game without having to refresh the page 
+ */
+
+function resetGame() {
+    // Clear the winner text
+    document.getElementById("winner").innerText = "";
+    
+    // Reinitialize game variables
+    gameOver = false;
+    currentPlayer = Redplayer;
+    currColumns = [5, 5, 5, 5, 5, 5, 5];
+    
+    // Clear and regenerate the  array and UI of the board
+    board = [];
+    let boardElement = document.getElementById("board");
+    boardElement.innerHTML = ''; // Clear the existing board UI
+    
+    // Regenerate the board
+    for (let r = 0; r < rows; r++) {
+        let row = []; 
+        for (let c = 0; c < columns; c++) {
+            row.push(''); 
+            let tile = document.createElement("div");
+            tile.id = r.toString() + "-" + c.toString();
+            tile.classList.add("tile");
+            tile.addEventListener("click", setPiece);
+            boardElement.append(tile);
+        }
+        board.push(row); 
+    }
 }
