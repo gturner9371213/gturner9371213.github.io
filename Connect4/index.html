@@ -7,8 +7,7 @@
     <title>Connect 4</title>
     <!-- Link the external CSS file for styling -->
     <link rel="stylesheet" href="connectfour.css">
-     <!-- Link to the javascript file for game logic -->
-    <script src="connectfour.js"></script>
+    
 </head>
 <body>
       <!--The buttom to reset the game-->
@@ -20,6 +19,11 @@
    
       <!-- A div element that will hold and display the game board. The game board will be generated inside this div dynmaically. -->
     <div id="board"></div>
+    
+    <!-- Loads the Socke.IO library to allow real-time communication between client and server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Link to the javascript file for game logic -->
+    <script src="connectfour.js"></script>
 
 </body>
 </html>

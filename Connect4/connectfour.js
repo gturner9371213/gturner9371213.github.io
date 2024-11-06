@@ -6,6 +6,7 @@ var columns = 7;
 var gameOver = false; 
 var currentPlayer = Redplayer; 
 var currColumns = [];
+var socket = io(); // Intialize Socket.IO connection 
 
 
 // The game board is intialized when the window is finished loading 
@@ -13,16 +14,39 @@ window.onload = function()
 {
     setBoard(); 
     document.getElementById("resetButton").addEventListener("click", resetGame);
+    // Informs the server to the reset the game 
+    socket.emit('resetGame');
+    resetGame();
 
 
 }
 
+// Handles moves coming from the server 
+socket.on('moveMade',(move) => 
+{
+    console.log("Move received:", move);
+    let { r, c, player } = move;
+    board[r][c] = player;
+    updateTileUI(r,c,player); // Update UI and local board based on the move made. 
+   
+ 
+} );
+// Listen for events that reset the game from the server
+socket.on('gameReset', resetGame);
+// Listen for the turn for the next player from the server
+socket.on('nextPlayer', (player) => {
+    console.log(`Next player is: ${player}`);
+    currentPlayer = player;
+    console.log(`Current player updated to ${player} (was: ${currentPlayer})`);
+    console.table(board);
+});
 
 /* Inspired by tutorial https://www.youtube.com/watch?v=4ARsthVnCTg&t=379s 
 
     Set up the game board with empty titles all which have click listers assign to them. 
 
 */
+
 function setBoard ()
 {
     board = []; 
@@ -52,44 +76,44 @@ function setBoard ()
   
    Control placing a piece on the board and switching the current player. 
 */
-function setPiece()
-{
-    // Returnsif the game is over
-    if(gameOver)
-    {
-        return; 
-    }
+
+function setPiece() {
+    if (gameOver) return;
+
     let coords = this.id.split("-");
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
+    r = currColumns[c]; // Get the current top empty slot
 
-    r = currColumns[c]; // Gets click current empty slot in the current column
-     
-    // Checks if the column is full.
-    if (r < 0) 
-    { 
-        return;
-    }
+    if (r < 0) return; // Column is full, do nothing
+
+    if (board[currColumns[c]][c] !== '') return;
+    r = currColumns[c];
+    board[r][c] = currentPlayer; // Place the piece on the board
     
-    // Update the current player and update the UI 
-    board[r][c] = currentPlayer; 
-    let tile = document.getElementById(r.toString() + "-" + c.toString());
-    if (currentPlayer == Redplayer) {
-        tile.classList.add("red-piece");
-        currentPlayer = Blackplayer;
-    }
-    else {
-        tile.classList.add("black-piece");
-        currentPlayer = Redplayer;
-    }
-    // Update the top empty row for the column
-    r -= 1; 
-    currColumns[c] = r; 
+    // Emit the move before potentially switching players, so that the server knows who made the move.
+   console.log(`Emitting move for player: ${currentPlayer}, Row: ${r}, Column: ${c}`);
+   socket.emit('playerMove', { r, c, player: currentPlayer });
 
-    // Check if the the current move has won the game 
+   // Update UI
+   updateTileUI(r, c, currentPlayer);
+   currColumns[c]--;
+  
     checkWinner();
-
 }
+// Updates the title UI based on the player's move
+function updateTileUI(r, c, player) {
+    let tile = document.getElementById(r.toString() + "-" + c.toString());
+    
+    tile.classList.remove("red-piece", "black-piece");
+    
+    if (player == Redplayer) {
+        tile.classList.add("red-piece");
+    } else if (player == Blackplayer) {
+        tile.classList.add("black-piece");
+    }
+}
+
 // Checks the whole board for a winning line
 function checkWinner()
 {
